@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.13",
+    "axios": "^1.5.1",
     "config": "^3.3.9",
     "telegraf": "^4.14.0"
   }
