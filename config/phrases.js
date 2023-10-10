@@ -1,14 +1,13 @@
-const COMMAND_TEXT = {
+export const COMMAND_TEXT = {
     dota: 'Dota 2',
     cs: 'Counter Strike 2',
-    getInventoryValue: 'Узнать стоимость инвентаря по игре'
+    getInventoryValue: 'Узнать стоимость инвентаря по игре',
+    backToMainMenu: 'Назад в главное меню.'
 }
 
-const DATA_VALUE = {
-    invValue: "priceAllInventory"
-}
-
-module.exports = {
-    COMMAND_TEXT,
-    DATA_VALUE
+export const DATA_ACTION = {
+    invValue: "priceAllInventory",
+    backToMainMenuValue: 'backMainMenu',
+    dota: 'dota',
+    cs: 'counter-strike'
 }

@@ -1,17 +1,17 @@
-import { Markup, Telegraf, Scenes} from "telegraf";
-import { COMMAND_TEXT } from "./config/phrases";
-import {start} from "./controllers/commands"
-
+import { Telegraf} from "telegraf";
+import { DATA_ACTION } from "./config/phrases.js";
+import {start, 
+    chooseGameCallback, 
+    backToMainMenuCallback} from "./controllers/commands.js"
+import dotenv from 'dotenv';
+dotenv.config({ path: './config/.env' });
 const bot = new Telegraf(process.env.TELEGRAM_ACCESS_KEY, {
     handlerTimeout: Infinity,
 })
 
-const setupBot = () =>  {
-    bot.start(start)
-
-    return bot;
-}
-
-module.exports = {
-    setupBot
+export const setupBot = () =>  {
+    bot.start(start);
+    bot.action(`${DATA_ACTION.invValue}`, chooseGameCallback);
+    bot.action(`${DATA_ACTION.backToMainMenuValue}`, backToMainMenuCallback)
+    bot.launch();
 }

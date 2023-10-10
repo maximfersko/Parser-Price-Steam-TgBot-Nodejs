@@ -1,5 +1,8 @@
-require('dotenv').config({path: './config/.env'})
 
-import { setupBot } from "./bot"
+import { setupBot } from './bot.js';
 
-await setupBot.launch();
+
+
+(async function() {
+    await setupBot();
+}())
