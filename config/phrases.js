@@ -2,12 +2,14 @@ export const COMMAND_TEXT = {
     dota: 'Dota 2',
     cs: 'Counter Strike 2',
     getInventoryValue: 'Узнать стоимость инвентаря по игре',
-    backToMainMenu: 'Назад в главное меню.'
+    backToMainMenu: 'Назад в главное меню.',
+    setOperation: 'Записать трату'
 }
 
 export const DATA_ACTION = {
     invValue: "priceAllInventory",
     backToMainMenuValue: 'backMainMenu',
     dota: 'dota',
-    cs: 'counter-strike'
+    cs: 'counter-strike',
+    op: 'operation'
 }

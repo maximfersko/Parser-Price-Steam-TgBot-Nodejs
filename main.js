@@ -1,8 +1,9 @@
-
 import { setupBot } from './bot.js';
 
-
-
 (async function() {
-    await setupBot();
-}())
+    try {
+        await setupBot().launch();
+    } catch (error) {
+        console.error('Failed to setup the bot:', error);
+    }
+}());
