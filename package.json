@@ -1,0 +1,24 @@
+{
+  "name": "parser_price_steam_inventory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "nodemon ./src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.13",
+    "axios": "^1.5.1",
+    "config": "^3.3.9",
+    "dotenv": "^16.3.1",
+    "telegraf": "^4.14.0"
+  }
+}
