@@ -8,7 +8,10 @@ const bot = new Telegraf(process.env.TELEGRAM_ACCESS_KEY, {
 
 const setupBot = () =>  {
     bot.start(start)
-    bot.hears()
+
+    return bot;
 }
 
-bot.launch();
+module.exports = {
+    setupBot
+}
