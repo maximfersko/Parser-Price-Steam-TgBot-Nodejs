@@ -20,7 +20,6 @@ export async function getInventoryValue() {
         let totalValue = 0;
         for (const itemKey in inventory) {
             const item = inventory[itemKey];
-            
             const assetClassInfoResponse = await axios.get(
                 `https://api.steampowered.com/ISteamUser/GetAssetClassInfo/v1`, {
                     params: {
@@ -32,9 +31,9 @@ export async function getInventoryValue() {
                     }
                 });
             const assetClassInfo = assetClassInfoResponse.data;
-            
+
             console.log(assetClassInfo);
-            
+
             const priceResponse = await axios.get(
                 `http://steamcommunity.com/market/priceoverview`, {
                     params: {
@@ -50,7 +49,7 @@ export async function getInventoryValue() {
             }
             console.log(priceResponse.data);
         }
-        
+
         console.log(`Total inventory value: $${totalValue}`);
     } catch (error) {
         console.error('Error getting inventory:', error);

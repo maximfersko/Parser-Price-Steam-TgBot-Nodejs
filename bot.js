@@ -1,16 +1,27 @@
-import { Telegraf, Scenes } from "telegraf";
-import { DATA_ACTION } from "./config/phrases.js";
-import dotenv from 'dotenv';
-import { createPagesInDB }from './services/notion.js' 
-import {dataWizard} from "./controllers/budgetScene.js"
 import {
-    start, 
-    chooseGameCallback, 
+    Telegraf,
+    Scenes
+} from "telegraf";
+import {
+    DATA_ACTION
+} from "./config/phrases.js";
+import dotenv from 'dotenv';
+import {
+    createPagesInDB
+} from './services/notion.js'
+import {
+    dataWizard
+} from "./controllers/budgetScene.js"
+import {
+    start,
+    chooseGameCallback,
     backToMainMenuCallback,
     priceSteamInventoryCallback
 } from "./controllers/commands.js"
 
-dotenv.config({ path: './config/.env' });
+dotenv.config({
+    path: './config/.env'
+});
 
 const bot = new Telegraf(process.env.TELEGRAM_ACCESS_KEY, {
     handlerTimeout: Infinity,

@@ -1,6 +1,8 @@
-import { setupBot } from './bot.js';
+import {
+    setupBot
+} from './bot.js';
 
-(async function() {
+(async function () {
     try {
         await setupBot().launch();
     } catch (error) {

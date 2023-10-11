@@ -1,7 +1,11 @@
 import dotenv from 'dotenv';
-import {Client} from '@notionhq/client'
+import {
+    Client
+} from '@notionhq/client'
 
-dotenv.config({ path: 'config/.env' });
+dotenv.config({
+    path: 'config/.env'
+});
 
 dotenv.config({
     path: 'config/.env'
@@ -31,7 +35,7 @@ export async function createPagesInDB(name, text, sum) {
             }
         }
     })
-    
+
     // await notion.blocks.children.append({
     //     block_id: response.id,
     //     children: [
@@ -51,6 +55,6 @@ export async function createPagesInDB(name, text, sum) {
     //         }
     //     ]
     // })
-    
+
     return response;
 }
