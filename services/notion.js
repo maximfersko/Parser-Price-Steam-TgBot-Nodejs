@@ -3,22 +3,26 @@ import {Client} from '@notionhq/client'
 
 dotenv.config({ path: 'config/.env' });
 
+dotenv.config({
+    path: 'config/.env'
+});
+
 const notion = new Client({
     auth: process.env.NOTION_ACCESS_KEY,
 })
 
 export async function createPagesInDB(name, text, sum) {
     const response = await notion.pages.create({
-        parent: { database_id: process.env.NOTION_DB_ID },
+        parent: {
+            database_id: process.env.NOTION_DB_ID
+        },
         properties: {
             Name: {
-                title: [
-                    {
-                        text: {
-                            content: name
-                        }
+                title: [{
+                    text: {
+                        content: name
                     }
-                ]
+                }]
             },
             Date: {
                 date: {
@@ -27,7 +31,7 @@ export async function createPagesInDB(name, text, sum) {
             }
         }
     })
-
+    
     // await notion.blocks.children.append({
     //     block_id: response.id,
     //     children: [
@@ -47,6 +51,6 @@ export async function createPagesInDB(name, text, sum) {
     //         }
     //     ]
     // })
-
+    
     return response;
 }
