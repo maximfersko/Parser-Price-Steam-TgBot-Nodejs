@@ -1,22 +1,13 @@
-import {
-    Telegraf,
-    Scenes
-} from "telegraf";
-import {
-    DATA_ACTION
-} from "./config/phrases.js";
+import { Telegraf, Scenes, session } from "telegraf";
+import { DATA_ACTION } from "./config/phrases.js";
 import dotenv from 'dotenv';
-import {
-    createPagesInDB
-} from './services/notion.js'
-import {
-    dataWizard
-} from "./controllers/budgetScene.js"
+import { dataWizard } from "./controllers/budgetScene.js"
 import {
     start,
     chooseGameCallback,
     backToMainMenuCallback,
-    priceSteamInventoryCallback
+    priceSteamInventoryCallback,
+    budgetMsg
 } from "./controllers/commands.js"
 
 dotenv.config({
@@ -28,13 +19,13 @@ const bot = new Telegraf(process.env.TELEGRAM_ACCESS_KEY, {
 })
 
 const stage = new Scenes.Stage([dataWizard]);
+bot.use(session());
 bot.use(stage.middleware());
 
 export const setupBot = () => {
     bot.start(start);
     bot.action(`${DATA_ACTION.invValue}`, chooseGameCallback);
-    bot.action(`${DATA_ACTION.backToMainMenuValue}`,
-        backToMainMenuCallback)
+    bot.action(`${DATA_ACTION.backToMainMenuValue}`, backToMainMenuCallback);
     bot.action(`${DATA_ACTION.cs}`, priceSteamInventoryCallback);
     bot.action(`${DATA_ACTION.op}`, (ctx) => {
         if (ctx.scene) {
@@ -42,16 +33,9 @@ export const setupBot = () => {
         } else {
             console.log("Scene is undefined");
         }
+        
     });
     return bot;
 }
 
-// bot.on('message', async(ctx) => {
-//     try {
-//         const text = ctx.message.text;
-//         const notionResponse = await createPagesInDB(text, 'testDesc', 999);
-//         ctx.reply(`${notionResponse.url}`);
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// })
+
